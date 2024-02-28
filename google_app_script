@@ -1,0 +1,19 @@
+var sheet_id = "XXXXX";
+var sheet_name = "pm_sensor_g4";
+
+function doGet(e){
+  var ss = SpreadsheetApp.openById(sheet_id);
+  var sheet = ss.getSheetByName(sheet_name);
+  var pm10 = String(e.parameter.pm10);
+  var pm25 = String(e.parameter.pm25);
+  var pm100 = String(e.parameter.pm100);
+  var um03 = String(e.parameter.um03);
+  var um05 = String(e.parameter.um05);
+  var um10 = String(e.parameter.um10);
+  var um25 = String(e.parameter.um25);
+  var um50 = String(e.parameter.um50);
+  var um100 = String(e.parameter.um100);
+  var DatumTijd = new Date();
+  var timestamp = Utilities.formatDate(DatumTijd, "GMT+1", "yyyy-MM-dd HH:mm:ss");
+  sheet.appendRow([timestamp,pm10,pm25,pm100,um03,um05,um10,um25,um50,um100]);
+}
